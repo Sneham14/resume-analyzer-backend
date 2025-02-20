@@ -1,0 +1,15 @@
+Django
+djangorestframework
+python-dotenv
+PyMuPDF
+langchain
+langchain-community
+openai
+spacy
+phonenumbers
+jsonschema
+psycopg2-binary
+python-dateutil  
+rapidfuzz
+django-cors-headers
+djangorestframework-simplejwt

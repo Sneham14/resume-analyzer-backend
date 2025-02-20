@@ -31,11 +31,13 @@ class ResumeUploadView(APIView):
 
                 # ✅ Get Filters from Request (Dynamic Input)
                 min_experience = int(request.data.get("min_experience", 5))  # Default: 5 years
+                required_skills = request.data.get("skills", "")  # ✅ Get user-inputted skills from UI
+                job_skills = [skill.strip() for skill in required_skills.split(",") if skill.strip()]  # Convert to list
 
-                # ✅ Score Resume
-                scoring_results = score_resume(parsed_data, min_experience)
+                # ✅ Score Resume (Includes Experience & Skill Match)
+                scoring_results = score_resume(parsed_data, min_experience, job_skills)
 
-                # ✅ Return Response
+                # ✅ Return Response (Now Includes Skill Match)
                 return Response({
                     "parsed_data": parsed_data,
                     "score": scoring_results["score"],
